@@ -1,12 +1,27 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
+    <ion-button slot="end" fill="clear" (click)="presentActionSheet()">
+      <ion-icon style="color: aliceblue;" name="menu"></ion-icon>
+    </ion-button>
     <ion-title>
-      Ionic APP
+      Chat App
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-button size="large" (click)="onLogout()">Logout</ion-button>
-  <ion-button size="large" routerLink="/admin">Admin</ion-button>
+<ion-content class="ion-padding">
+  <ion-list>
+      <ion-item *ngFor="let chat of chatRooms" (click)="openChat(chat)">
+        <ion-avatar slot="start">
+          <ion-img [src]="chat.img"></ion-img>
+        </ion-avatar>
+        <ion-label>
+          <h2><b>{{chat.name}}</b></h2>
+          <h3>{{chat.description}}</h3>
+          <p>Accede dando click y escribe un mensaje</p>
+        </ion-label>
+      </ion-item>
+  </ion-list>
+  <!--<ion-button size="large" (click)="onLogout()">Logout</ion-button>
+  <ion-button size="large" routerLink="/admin">Admin</ion-button>-->
 </ion-content>
